@@ -26,6 +26,11 @@ import java.util.List;
  *
  * @author Fiorella Jarama Peñaloza
  */
+@CrossOrigin(
+        origins = "http://localhost:5173",
+        allowedHeaders = {"Authorization","Content-Type"},
+        methods = {RequestMethod.GET, RequestMethod.POST, RequestMethod.PUT, RequestMethod.DELETE, RequestMethod.PATCH, RequestMethod.OPTIONS}
+)
 @RestController
 @RequestMapping(value = "api/v1/bus", produces = MediaType.APPLICATION_JSON_VALUE)
 @Tag(name = "Civa Bus", description = "Civa Management Endpoints")
