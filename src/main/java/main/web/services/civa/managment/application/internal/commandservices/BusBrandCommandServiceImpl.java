@@ -11,7 +11,7 @@ import main.web.services.civa.managment.infrastructure.persistence.jpa.repositor
 import org.springframework.stereotype.Service;
 
 /**
- * Descripción de la clase.
+ * BusBrandCommandServiceImpl - Implementation of BusBrandCommandService.
  *
  * @author Fiorella Jarama Peñaloza
  */

@@ -11,7 +11,7 @@ import lombok.With;
 import main.web.services.civa.managment.domain.model.valueobjects.BusBrandName;
 
 /**
- * Descripción de la clase.
+ * BusBrand - Represents the brand of a bus.
  *
  * @author Fiorella Jarama Peñaloza
  */

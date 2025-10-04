@@ -1,9 +1,9 @@
 package main.web.services.civa.managment.domain.services;
 
 import main.web.services.civa.managment.domain.model.commands.SeedBusBrandCommmand;
-import org.springframework.stereotype.Service;
 
 /**
+ * BusBrandCommandService - Service interface for handling bus brand commands.
  * @author Fiorella Jarama Peñaloza
  * @version 1.0
  */

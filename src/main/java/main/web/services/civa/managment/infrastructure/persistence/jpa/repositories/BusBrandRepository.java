@@ -7,6 +7,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.Optional;
 
 /**
+ * BusBrandRepository - Repository interface for BusBrand entity.
  * @author Fiorella Jarama Peñaloza
  * @version 1.0
  */
