@@ -1,6 +1,6 @@
 package main.web.services.civa.managment.domain.services;
 
-import main.web.services.civa.managment.domain.model.commands.CreateBusBrandCommand;
+import main.web.services.civa.managment.domain.model.commands.CreateBusCommand;
 
 import javax.swing.*;
 
@@ -9,5 +9,5 @@ import javax.swing.*;
  * @version 1.0
  */
 public interface BusCommandService {
-    Long handle(CreateBusBrandCommand command);
+    Long handle(CreateBusCommand command);
 }

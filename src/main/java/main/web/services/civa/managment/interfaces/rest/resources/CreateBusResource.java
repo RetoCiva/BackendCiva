@@ -10,6 +10,7 @@ public record CreateBusResource(
         String characteristics,
         String plate,
         Long status,
-        String busTypeName
+        String busBrand
 ) {
+
 }

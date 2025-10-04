@@ -15,7 +15,8 @@ public class CreateBusCommandFromResourceAssembler {
                 resource.busNumber(),
                 resource.characteristics(),
                 resource.plate(),
-                resource.status()
+                resource.status(),
+                resource.busBrand()
         );
     }
 }

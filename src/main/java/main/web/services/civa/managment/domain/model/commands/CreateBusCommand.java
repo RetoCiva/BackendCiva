@@ -12,6 +12,7 @@ public record CreateBusCommand(
         Long busNumber,
         String characteristics,
         String plate,
-        Long status
+        Long status,
+        String busBrand
 ) {
 }
