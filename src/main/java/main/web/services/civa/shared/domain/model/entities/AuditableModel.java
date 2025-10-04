@@ -1,4 +1,4 @@
-package com.acme.center.practica2pc2.shared.domain.model.entities;
+package main.web.services.civa.shared.domain.model.entities;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.EntityListeners;
