@@ -1,7 +1,4 @@
-package main.web.services.civa.managment.domain.model.commands;/**
- * @author Fiorella Jarama Peñaloza
- * @version 1.0
- */
+package main.web.services.civa.managment.domain.model.commands;
 
 /**
  * SeedBusBrandCommmand - Command to seed bus brand data.
