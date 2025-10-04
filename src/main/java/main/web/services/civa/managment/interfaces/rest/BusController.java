@@ -4,8 +4,10 @@ package main.web.services.civa.managment.interfaces.rest;/**
  */
 
 import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import main.web.services.civa.iam.domain.model.queries.GetAllUsersQuery;
+import main.web.services.civa.managment.domain.model.aggregates.Bus;
 import main.web.services.civa.managment.domain.model.queries.GetAllBusesQuery;
 import main.web.services.civa.managment.domain.model.queries.GetBusById;
 import main.web.services.civa.managment.domain.services.BusCommandService;
@@ -20,6 +22,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * Bus Controller - This class represents the REST controller for the Bus entity.
@@ -69,13 +72,17 @@ public class BusController {
      * GET /api/v1/bus
      * Returns all buses.
      */
-    @Operation(summary = "Get all buses", description = "Returns a list of all registered buses")
+    @Operation(summary = "OGet all buses",
+            responses = {
+                    @ApiResponse(responseCode = "200", description = "Datos obtenidos exitosamente")
+            })
     @GetMapping
-    public ResponseEntity<List<BusResource>> getAllBuses() {
-        var getAllBuses = new GetAllBusesQuery();
-        var buses = busQueryService.handle(getAllBuses);
-        var busResources = buses.stream().map(BusResourceFromEntityAssembler::toResourceFromEntity).toList();
-        return ResponseEntity.ok(busResources);
+    public ResponseEntity<List<BusResource>> getAllSensorData() {
+        List<Bus> sensorDataList = busQueryService.handle(new GetAllBusesQuery());
+        List<BusResource> resources = sensorDataList.stream()
+                .map(BusResourceFromEntityAssembler::toResourceFromEntity)
+                .collect(Collectors.toList());
+        return ResponseEntity.ok(resources);
     }
 
     /**

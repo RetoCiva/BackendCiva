@@ -41,6 +41,6 @@ public class BusQueryServiceImpl implements BusQueryService {
 
     @Override
     public List<Bus> handle(GetAllBusesQuery getAllBuses) {
-        return List.of();
+        return this.busRepository.findAll();
     }
 }
