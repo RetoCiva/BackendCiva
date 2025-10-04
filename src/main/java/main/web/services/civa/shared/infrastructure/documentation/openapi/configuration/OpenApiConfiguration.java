@@ -1,4 +1,4 @@
-package com.acme.center.practica2pc2.shared.infrastructure.documentation.openapi.configuration;
+package main.web.services.civa.shared.infrastructure.documentation.openapi.configuration;
 
 import io.swagger.v3.oas.models.ExternalDocumentation;
 import io.swagger.v3.oas.models.OpenAPI;
@@ -15,14 +15,14 @@ public class OpenApiConfiguration {
         var openApi = new OpenAPI();
         openApi
                 .info(new Info()
-                        .title("ACME SportEvents API")
-                        .description("ACME SportEvents application REST API documentation.")
+                        .title("CIVA transportation API")
+                        .description("CIVA transportation application REST API documentation.")
                         .version("v1.0.0")
                         .license(new License().name("Apache 2.0")
                                 .url("https://springdoc.org")))
                 .externalDocs(new ExternalDocumentation()
-                        .description("ACME SportEvents wiki Documentation")
-                        .url("https://acme-sport-events.wiki.github.io/docs"));
+                        .description("CIVA transportation wiki Documentation")
+                        .url("https://civa-bus-transportation.wiki.github.io/docs"));
         return openApi;
     }
 }

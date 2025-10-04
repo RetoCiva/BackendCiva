@@ -1,4 +1,4 @@
-package com.acme.center.practica2pc2.shared.domain.model.aggregates;
+package main.web.services.civa.shared.domain.model.aggregates;
 
 import jakarta.persistence.*;
 import lombok.Getter;
