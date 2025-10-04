@@ -1,21 +1,18 @@
-package main.web.services.civa.managment.application.internal.queryservices;/**
- * @author Fiorella Jarama Peñaloza
- * @version 1.0
- */
-
+package main.web.services.civa.managment.application.internal.queryservices;
 import main.web.services.civa.managment.domain.model.aggregates.Bus;
+import main.web.services.civa.managment.domain.model.queries.GetAllBusesQuery;
 import main.web.services.civa.managment.domain.model.queries.GetBusById;
 import main.web.services.civa.managment.domain.model.queries.GetByBusBrandName;
 import main.web.services.civa.managment.domain.model.queries.GetByPlateNumber;
-import main.web.services.civa.managment.domain.services.BusCommandService;
 import main.web.services.civa.managment.domain.services.BusQueryService;
 import main.web.services.civa.managment.infrastructure.persistence.jpa.repositories.BusRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 /**
- * Descripción de la clase.
+ * BusQueryServiceImpl - Represents the implementation of the bus query service.
  *
  * @author Fiorella Jarama Peñaloza
  */
@@ -40,5 +37,10 @@ public class BusQueryServiceImpl implements BusQueryService {
     @Override
     public Optional<Bus> handle(GetByPlateNumber query) {
         return Optional.empty();
+    }
+
+    @Override
+    public List<Bus> handle(GetAllBusesQuery getAllBuses) {
+        return List.of();
     }
 }

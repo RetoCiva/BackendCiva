@@ -39,7 +39,7 @@ public class BusCommandServiceImpl implements BusCommandService {
             throw new BusBrandNotFoundException(command.busBrand());
         }
 
-        Optional<BusBrand> optionalEquipmentType = busBrandRepository.findByBusBrand(brandName);
+        Optional<BusBrand> optionalEquipmentType = busBrandRepository.findByBrand(brandName);
         BusBrand equipmentType = optionalEquipmentType.orElseThrow(() -> new BusBrandNotFoundException(command.busBrand()));
 
         Bus equipment = new Bus(command, equipmentType);

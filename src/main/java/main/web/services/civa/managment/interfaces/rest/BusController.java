@@ -3,15 +3,26 @@ package main.web.services.civa.managment.interfaces.rest;/**
  * @version 1.0
  */
 
+import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import main.web.services.civa.iam.domain.model.queries.GetAllUsersQuery;
+import main.web.services.civa.managment.domain.model.queries.GetAllBusesQuery;
+import main.web.services.civa.managment.domain.model.queries.GetBusById;
 import main.web.services.civa.managment.domain.services.BusCommandService;
 import main.web.services.civa.managment.domain.services.BusQueryService;
+import main.web.services.civa.managment.interfaces.rest.resources.BusResource;
+import main.web.services.civa.managment.interfaces.rest.resources.CreateBusResource;
+import main.web.services.civa.managment.interfaces.rest.transform.BusResourceFromEntityAssembler;
+import main.web.services.civa.managment.interfaces.rest.transform.CreateBusCommandFromResourceAssembler;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 /**
- * Descripción de la clase.
+ * Bus Controller - This class represents the REST controller for the Bus entity.
  *
  * @author Fiorella Jarama Peñaloza
  */
@@ -28,6 +39,54 @@ public class BusController {
         this.busQueryService = busQueryService;
     }
 
+    /**
+     * This method creates a bus.
+     * @param res
+     * @return ResponseEntity<BusResource>
+     */
+    @PostMapping
+    public ResponseEntity<BusResource> createBus(@RequestBody CreateBusResource res) {
+        var createBusCommand = CreateBusCommandFromResourceAssembler.toCommandFromResource(res);
+        var busId = busCommandService.handle(createBusCommand);
+        if (busId == 0L) {
+            return ResponseEntity.badRequest().build();
+        }
+        var getBusByIdQuery = new GetBusById(busId);
+        var bus = busQueryService.handle(getBusByIdQuery);
+        if (bus.isEmpty()) {
+            return ResponseEntity.badRequest().build();
+        }
+        var animalResource = BusResourceFromEntityAssembler.toResourceFromEntity(bus.get());
+        return new ResponseEntity<>(animalResource, HttpStatus.CREATED);
+    }
+
+    /**
+     * GET /api/v1/bus
+     * Returns all buses.
+     */
+    @Operation(summary = "Get all buses", description = "Returns a list of all registered buses")
+    @GetMapping
+    public ResponseEntity<List<BusResource>> getAllBuses() {
+        var getAllBuses = new GetAllBusesQuery();
+        var buses = busQueryService.handle(getAllBuses);
+        var busResources = buses.stream().map(BusResourceFromEntityAssembler::toResourceFromEntity).toList();
+        return ResponseEntity.ok(busResources);
+    }
+
+    /**
+     * GET /api/v1/bus/{id}
+     * Returns a specific bus by its ID.
+     */
+    @Operation(summary = "Get bus by ID", description = "Returns detailed information of a specific bus")
+    @GetMapping("/{id}")
+    public ResponseEntity<BusResource> getBusById(@PathVariable Long id) {
+        var getBusByIdQuery = new GetBusById(id);
+        var busOptional = busQueryService.handle(getBusByIdQuery);
+
+        return busOptional
+                .map(bus -> ResponseEntity.ok(BusResourceFromEntityAssembler.toResourceFromEntity(bus)))
+                .orElse(ResponseEntity.notFound().build());
+    }
 
 
 

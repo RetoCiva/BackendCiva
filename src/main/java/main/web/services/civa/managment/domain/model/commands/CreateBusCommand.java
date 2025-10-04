@@ -4,7 +4,7 @@ package main.web.services.civa.managment.domain.model.commands;/**
  */
 
 /**
- * Descripción de la clase.
+ * CreateBusCommand - Command to create a bus.
  *
  * @author Fiorella Jarama Peñaloza
  */

@@ -12,6 +12,6 @@ import java.util.Optional;
  * @version 1.0
  */
 public interface BusBrandRepository extends JpaRepository<BusBrand, Long> {
-    boolean existsByBusBrand(BusBrandName name);
-    Optional<BusBrand> findByBusBrand(BusBrandName type);
+    boolean existsByBrand(BusBrandName name);
+    Optional<BusBrand> findByBrand(BusBrandName type);
 }

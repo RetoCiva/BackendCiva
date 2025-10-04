@@ -1,7 +1,4 @@
-package main.web.services.civa.managment.infrastructure.persistence.jpa.repositories;/**
- * @author Fiorella Jarama Peñaloza
- * @version 1.0
- */
+package main.web.services.civa.managment.infrastructure.persistence.jpa.repositories;
 
 import main.web.services.civa.managment.domain.model.aggregates.Bus;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -15,5 +12,5 @@ import org.springframework.stereotype.Repository;
  */
 @Repository
 public interface BusRepository extends JpaRepository<Bus, Long> {
-    boolean existsByPlateNumber(String plateNumber);
+    boolean existsByPlate(String plate);
 }

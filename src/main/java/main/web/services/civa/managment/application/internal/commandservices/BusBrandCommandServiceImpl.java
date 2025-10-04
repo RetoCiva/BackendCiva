@@ -30,7 +30,7 @@ public class BusBrandCommandServiceImpl implements BusBrandCommandService {
         Long lastId = null;
 
         for (BusBrandName busBrandName : deviceTypeNames) {
-            if (!busBrandRepository.existsByBusBrand(busBrandName)) {
+            if (!busBrandRepository.existsByBrand(busBrandName)) {
                 var deviceType = new BusBrand(busBrandName);
                 busBrandRepository.save(deviceType);
                 lastId = deviceType.getId();
