@@ -1,7 +1,4 @@
-package main.web.services.civa.managment.domain.model.entities;/**
- * @author Fiorella Jarama Peñaloza
- * @version 1.0
- */
+package main.web.services.civa.managment.domain.model.entities;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -12,7 +9,6 @@ import main.web.services.civa.managment.domain.model.valueobjects.BusBrandName;
 
 /**
  * BusBrand - Represents the brand of a bus.
- *
  * @author Fiorella Jarama Peñaloza
  */
 @Entity
@@ -27,9 +23,9 @@ public class BusBrand {
     private Long id;
 
     @Enumerated(EnumType.STRING)
-    private BusBrandName busBrand;
+    private BusBrandName brand;
 
-    public BusBrand(BusBrandName busBrand) {
-            this.busBrand = busBrand;
+    public BusBrand(BusBrandName brand) {
+        this.brand = brand;
     }
 }

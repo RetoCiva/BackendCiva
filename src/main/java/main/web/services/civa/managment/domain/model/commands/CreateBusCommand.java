@@ -8,7 +8,7 @@ package main.web.services.civa.managment.domain.model.commands;/**
  *
  * @author Fiorella Jarama Peñaloza
  */
-public record CreateBusBrandCommand(
+public record CreateBusCommand(
         Long busNumber,
         String characteristics,
         String plate,

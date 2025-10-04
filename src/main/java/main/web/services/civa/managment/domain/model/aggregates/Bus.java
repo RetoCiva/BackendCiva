@@ -9,7 +9,7 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import lombok.Getter;
 import lombok.Setter;
-import main.web.services.civa.managment.domain.model.commands.CreateBusBrandCommand;
+import main.web.services.civa.managment.domain.model.commands.CreateBusCommand;
 import main.web.services.civa.managment.domain.model.entities.BusBrand;
 import main.web.services.civa.managment.domain.model.valueobjects.BusNumber;
 import main.web.services.civa.managment.domain.model.valueobjects.Characteristics;
@@ -55,11 +55,36 @@ public class Bus extends AuditableAbstractAggregateRoot<Bus> {
         this.busBrand = busBrand;
     }
 
-    public Bus (CreateBusBrandCommand command, BusBrand busBrand) {
+    public Bus (CreateBusCommand command, BusBrand busBrand) {
         this.busNumber = new BusNumber(command.busNumber());
         this.characteristics = new Characteristics(command.characteristics());
         this.plate = new Plate(command.plate());
         this.status = new Status(command.status());
         this.busBrand = busBrand;
+    }
+
+    //getters
+    public Long getBusId() {
+        return super.getId();
+    }
+
+    public Long getBusNumber() {
+        return busNumber.busNumber();
+    }
+
+    public String getCharacteristics() {
+        return characteristics.characteristics();
+    }
+
+    public String getPlate() {
+        return plate.plate();
+    }
+
+    public Long getStatus() {
+        return status.status();
+    }
+
+    public String getBusBrand() {
+        return busBrand.getBrand().name();
     }
 }

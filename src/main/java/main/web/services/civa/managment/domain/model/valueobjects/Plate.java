@@ -1,10 +1,7 @@
-package main.web.services.civa.managment.domain.model.valueobjects;/**
- * @author Fiorella Jarama Peñaloza
- * @version 1.0
- */
+package main.web.services.civa.managment.domain.model.valueobjects;
 
 /**
- * Descripción de la clase.
+ * Value object representing a vehicle's license plate.
  *
  * @author Fiorella Jarama Peñaloza
  */
